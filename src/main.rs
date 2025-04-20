@@ -31,7 +31,7 @@ fn f(x: f64) -> f64 {
 }
 
 fn solve_5_1() -> Result<(), Box<dyn std::error::Error>> {
-    let root = BitMapBackend::new("cartesian-plot.png", (640, 480)).into_drawing_area();
+    let root = BitMapBackend::new("cartesian-plot.png", (720, 480)).into_drawing_area();
     root.fill(&WHITE)?;
     // Read in the file's contents of the file call velocities.txt
     let file = File::open("excercises/velocities.txt").expect("Unable to open file");
@@ -58,7 +58,7 @@ fn solve_5_1() -> Result<(), Box<dyn std::error::Error>> {
     let result: Vec<f64> = Integrate::trap_idx(velocities.clone()).unwrap();
 
     println!("run: {:#?}", result[33]);
-    // convert the times and and the results to f32
+
     let times: Vec<f32> = times.iter().map(|x| *x as f32).collect();
     let result: Vec<f32> = result.iter().map(|x| *x as f32).collect();
 
@@ -86,7 +86,7 @@ fn solve_5_1() -> Result<(), Box<dyn std::error::Error>> {
         .border_style(BLACK)
         .draw()?;
 
-    root.present()?;
+    // root.present()?;
 
     Ok(())
 }
